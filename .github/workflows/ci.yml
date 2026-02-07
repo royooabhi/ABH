@@ -1,14 +1,23 @@
-name: Basics CI
+name: Deploy to GitHub Pages
+
 on:
-  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-build:
-runs-on: ubuntu-latest
-steps:
+  deploy:
+    runs-on: ubuntu-latest
 
-users: action/checkout@v4
-
-- name: Run build
-run:echo" workflow ran succesfully"
-
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4
