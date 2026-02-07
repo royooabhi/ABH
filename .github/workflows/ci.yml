@@ -1,0 +1,16 @@
+name: First Workflow Success
+on:
+  push:
+branches:
+- main
+jobs:
+build:
+runs-on:
+ ubuntu-latest
+steps:
+-name: Checkout code
+users: action/checkout@v4
+
+- name: Success message
+run:echo" workflow ran succesfully
+
