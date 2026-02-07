@@ -1,16 +1,14 @@
-name: First Workflow Success
+name: Basics CI
 on:
-  push:
-branches:
-- main
+  pull_request:
+
 jobs:
 build:
-runs-on:
- ubuntu-latest
+runs-on: ubuntu-latest
 steps:
--name: Checkout code
+
 users: action/checkout@v4
 
-- name: Success message
-run:echo" workflow ran succesfully
+- name: Run build
+run:echo" workflow ran succesfully"
 
